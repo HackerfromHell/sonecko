@@ -197,10 +197,13 @@
             <span class="cat">🐾</span>
         </div>
         <button class="play-button" onclick="playAudio()">Натисни сюди!</button>
-        <audio id="audio">
-            <source src="https://cdn.pixabay.com/audio/2022/02/14/audio_91cc870dc0.mp3" type="audio/mp3">
-            Ваш браузер не підтримує аудіоелемент.
-        </audio>
+<audio id="audio" preload="auto">
+  <source
+    src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.ogg"
+    type="audio/ogg">
+  Ваш браузер не підтримує аудіоелемент.
+</audio>
+
     </div>
     <script>
         const audio = document.getElementById('audio');
