@@ -1,225 +1,195 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Найніжніший котячий плеєр 😻💖</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', sans-serif;
-            background: linear-gradient(135deg, #fff0f7, #f0e6ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            position: relative;
-            touch-action: manipulation;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Найніжніший котячий плеєр 😻💖</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background: linear-gradient(135deg,#fff0f7,#f0e6ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      margin:0;
+      overflow:hidden;
+      position:relative;
+      touch-action:manipulation;
+    }
+    /* Вимикаємо події над декоративними елементами */
+    .background,
+    .background-cat,
+    .compliment,
+    .heart {
+      pointer-events: none;
+    }
 
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+    .background {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:-1;
+      overflow:hidden;
+    }
+    .background-cat {
+      position:absolute;
+      font-size:70px;
+      opacity:.15;
+      animation:sway 12s infinite ease-in-out;
+    }
+    .background-cat:nth-child(1){ top:5%; left:5%;   animation-delay:0s; }
+    .background-cat:nth-child(2){ top:15%; right:5%; animation-delay:3s; }
+    .background-cat:nth-child(3){ bottom:20%; left:10%; animation-delay:6s; }
+    .background-cat:nth-child(4){ bottom:10%; right:10%; animation-delay:9s; }
 
-        .background-cat {
-            position: absolute;
-            font-size: 70px;
-            opacity: 0.15;
-            animation: sway 12s infinite ease-in-out;
-        }
+    .compliment {
+      position:absolute;
+      font-size:16px;
+      color:#ff69b4;
+      text-shadow:0 2px 5px rgba(255,182,193,.6);
+      animation:glow 7s infinite;
+      text-align:center;
+      max-width:200px;
+    }
+    .compliment:nth-child(5){ top:5%;  left:10%; animation-delay:0s; }
+    .compliment:nth-child(6){ top:20%; right:10%; animation-delay:2s; }
+    .compliment:nth-child(7){ bottom:15%; left:15%; animation-delay:4s; }
+    .compliment:nth-child(8){ bottom:5%;  right:15%; animation-delay:6s; }
 
-        .background-cat:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
-        .background-cat:nth-child(2) { top: 15%; right: 5%; animation-delay: 3s; }
-        .background-cat:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 6s; }
-        .background-cat:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 9s; }
+    .player {
+      background:#fff0f5;
+      border-radius:70px;
+      padding:50px;
+      box-shadow:0 10px 25px rgba(255,182,193,.7);
+      text-align:center;
+      width:85%;
+      max-width:450px;
+      animation:float 2.8s ease-in-out infinite;
+      position:relative;
+      z-index:1;
+    }
 
-        .compliment {
-            position: absolute;
-            font-size: 16px;
-            color: #ff69b4;
-            text-shadow: 0 2px 5px rgba(255, 182, 193, 0.6);
-            animation: glow 7s infinite;
-            text-align: center;
-            max-width: 200px;
-        }
+    .cat-container {
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      margin-bottom:25px;
+    }
+    .cat {
+      font-size:72px;
+      animation:hop 1.6s infinite;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .cat:active {
+      transform:scale(1.4);
+      color:#ff69b4;
+    }
 
-        .compliment:nth-child(5) { top: 5%; left: 10%; animation-delay: 0s; }
-        .compliment:nth-child(6) { top: 20%; right: 10%; animation-delay: 2s; }
-        .compliment:nth-child(7) { bottom: 15%; left: 15%; animation-delay: 4s; }
-        .compliment:nth-child(8) { bottom: 5%; right: 15%; animation-delay: 6s; }
+    .play-button {
+      pointer-events: auto;    /* даємо кнопці можливість приймати події */
+      z-index:2;               /* поверх усього */
+      background:#ff99d6;
+      border:none;
+      padding:18px 45px;
+      border-radius:60px;
+      color:white;
+      font-size:22px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:transform .2s;
+      box-shadow:0 5px 12px rgba(255,153,204,.6);
+      touch-action:manipulation;
+    }
+    .play-button:hover {
+      transform:scale(1.1);
+      background:#ff80c4;
+    }
+    .play-button:active {
+      transform:scale(0.9);
+      background:#ff66bb; /* видно натискання */
+    }
 
-        .player {
-            background: #fff0f5;
-            border-radius: 70px;
-            padding: 50px;
-            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.7);
-            text-align: center;
-            width: 85%;
-            max-width: 450px;
-            animation: float 2.8s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
+    audio { display:none; }
 
-        .cat-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(-10px); }
+    }
+    @keyframes hop {
+      0%,100% { transform:translateY(0); }
+      50%     { transform:translateY(-12px); }
+    }
+    @keyframes sway {
+      0%   { transform:translate(0,0); }
+      50%  { transform:translate(15px,15px); }
+      100% { transform:translate(0,0); }
+    }
+    @keyframes glow {
+      0%   { opacity:.5; }
+      50%  { opacity:1; }
+      100% { opacity:.5; }
+    }
 
-        .cat {
-            font-size: 72px;
-            animation: hop 1.6s infinite;
-            cursor: pointer;
-            touch-action: manipulation;
-        }
-
-        .cat:active {
-            transform: scale(1.4);
-            color: #ff69b4;
-        }
-
-        .play-button {
-            background: #ff99d6;
-            border: none;
-            padding: 18px 45px;
-            border-radius: 60px;
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-            box-shadow: 0 5px 12px rgba(255, 153, 204, 0.6);
-            touch-action: manipulation;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            background: #ff80c4;
-        }
-
-        .play-button:active {
-            transform: scale(0.9);
-        }
-
-        audio {
-            display: none;
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 28px;
-            animation: twinkle 1.8s infinite;
-        }
-
-        .heart:nth-child(1) { top: 15px; left: 15px; animation-delay: 0s; }
-        .heart:nth-child(2) { top: 15px; right: 15px; animation-delay: 0.4s; }
-        .heart:nth-child(3) { bottom: 15px; left: 15px; animation-delay: 0.8s; }
-        .heart:nth-child(4) { bottom: 15px; right: 15px; animation-delay: 1.2s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes hop {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        @keyframes sway {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(15px, 15px); }
-            100% { transform: translate(0, 0); }
-        }
-
-        @keyframes glow {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
-
-        @media (max-width: 600px) {
-            .player {
-                width: 90%;
-                padding: 35px;
-            }
-            .cat {
-                font-size: 56px;
-            }
-            .play-button {
-                font-size: 18px;
-                padding: 15px 35px;
-            }
-            .compliment {
-                font-size: 14px;
-                max-width: 150px;
-            }
-            .background-cat {
-                font-size: 50px;
-            }
-        }
-    </style>
+    @media(max-width:600px){
+      .player{width:90%;padding:35px;}
+      .cat{font-size:56px;}
+      .play-button{font-size:18px;padding:15px 35px;}
+      .compliment{font-size:14px;max-width:150px;}
+      .background-cat{font-size:50px;}
+    }
+  </style>
 </head>
 <body>
-    <div class="background">
-        <span class="background-cat">😺</span>
-        <span class="background-cat">😽</span>
-        <span class="background-cat">😻</span>
-        <span class="background-cat">🐾</span>
-        <span class="compliment">Твоя усмішка зігріває краще, ніж сонечко! 😻</span>
-        <span class="compliment">Ти робиш мій день чарівним! 🌸</span>
-        <span class="compliment">Твоє серденько – як поле маків! 💖</span>
-        <span class="compliment">Ти моє кохане сонечко! 😺</span>
-    </div>
-    <div class="player">
-        <span class="heart">💖</span>
-        <span class="heart">💖</span>
-        <span class="heart">💖</span>
-        <span class="heart">💖</span>
-        <div class="cat-container">
-            <span class="cat">😻</span>
-            <span class="cat">😽</span>
-            <span class="cat">🐾</span>
-        </div>
-        <button class="play-button" onclick="playAudio()">Натисни сюди!</button>
-<audio id="audio" preload="auto">
-  <source
-    src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.mp3"
-    type="audio/ogg">
-  Ваш браузер не підтримує аудіоелемент.
-</audio>
+  <div class="background">
+    <span class="background-cat">😺</span>
+    <span class="background-cat">😽</span>
+    <span class="background-cat">😻</span>
+    <span class="background-cat">🐾</span>
+    <span class="compliment">Твоя усмішка зігріває краще, ніж сонечко! 😻</span>
+    <span class="compliment">Ти робиш мій день чарівним! 🌸</span>
+    <span class="compliment">Твоє серденько – як поле маків! 💖</span>
+    <span class="compliment">Ти моє кохане сонечко! 😺</span>
+  </div>
 
+  <div class="player">
+    <span class="heart">💖</span><span class="heart">💖</span>
+    <span class="heart">💖</span><span class="heart">💖</span>
+
+    <div class="cat-container">
+      <span class="cat">😻</span>
+      <span class="cat">😽</span>
+      <span class="cat">🐾</span>
     </div>
-    <script>
-        const audio = document.getElementById('audio');
-        function playAudio() {
-            audio.play().catch(error => {
-                console.log("Audio playback failed:", error);
-            });
-        }
-        document.querySelectorAll('.cat').forEach(cat => {
-            cat.addEventListener('touchstart', () => {
-                cat.style.color = cat.style.color === 'rgb(255, 105, 180)' ? '' : '#ff69b4';
-            });
-            cat.addEventListener('click', () => {
-                cat.style.color = cat.style.color === 'rgb(255, 105, 180)' ? '' : '#ff69b4';
-            });
-        });
-    </script>
+
+    <button class="play-button">Натисни сюди!</button>
+
+    <audio id="audio" preload="auto">
+      <!-- MP3 для iOS/Safari -->
+      <source src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.mp3" type="audio/mpeg">
+      <!-- Оригінал OGG для інших -->
+      <source src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.ogg" type="audio/ogg">
+      Ваш браузер не підтримує аудіоелемент.
+    </audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const btn = document.querySelector('.play-button');
+
+    function playAudio() {
+      audio.play().catch(err => {
+        console.warn('Audio playback failed:', err);
+      });
+    }
+
+    // Ловимо як click, так і touchend
+    btn.addEventListener('click', playAudio);
+    btn.addEventListener('touchend', e => {
+      e.preventDefault(); // щоби не дублювати click
+      playAudio();
+    });
+  </script>
 </body>
 </html>
