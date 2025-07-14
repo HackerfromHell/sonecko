@@ -1,195 +1,201 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Найніжніший котячий плеєр 😻💖</title>
+  <title>❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Zeyada&display=swap'>
   <style>
     body {
-      font-family: 'Comic Sans MS', sans-serif;
-      background: linear-gradient(135deg,#fff0f7,#f0e6ff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      height:100vh;
-      margin:0;
-      overflow:hidden;
-      position:relative;
-      touch-action:manipulation;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: 1000px;
+      background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+      background-position: center center;
+      margin: 0;
+      overflow: hidden;
+      touch-action: none;
     }
-    /* Вимикаємо події над декоративними елементами */
-    .background,
-    .background-cat,
-    .compliment,
-    .heart {
-      pointer-events: none;
+    .paper {
+      background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
+      background-size: 500px;
+      background-position: center center;
+      padding: 20px 100px;
+      transform: rotateZ(-5deg);
+      box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+      position: absolute;
+      touch-action: none;
+      z-index: 1; /* Початковий z-index для всіх папірців */
     }
-
-    .background {
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:-1;
-      overflow:hidden;
+    .top-paper {
+      z-index: 10; /* Вищий z-index для папірця зверху */
     }
-    .background-cat {
-      position:absolute;
-      font-size:70px;
-      opacity:.15;
-      animation:sway 12s infinite ease-in-out;
+    .paper:nth-of-type(3n) {
+      background-position: left top;
     }
-    .background-cat:nth-child(1){ top:5%; left:5%;   animation-delay:0s; }
-    .background-cat:nth-child(2){ top:15%; right:5%; animation-delay:3s; }
-    .background-cat:nth-child(3){ bottom:20%; left:10%; animation-delay:6s; }
-    .background-cat:nth-child(4){ bottom:10%; right:10%; animation-delay:9s; }
-
-    .compliment {
-      position:absolute;
-      font-size:16px;
-      color:#ff69b4;
-      text-shadow:0 2px 5px rgba(255,182,193,.6);
-      animation:glow 7s infinite;
-      text-align:center;
-      max-width:200px;
+    p {
+      font-family: 'Zeyada';
+      font-size: 50px;
+      color: rgb(0,0,100);
+      opacity: 0.75;
+      user-select: none;
+      text-align: center;
     }
-    .compliment:nth-child(5){ top:5%;  left:10%; animation-delay:0s; }
-    .compliment:nth-child(6){ top:20%; right:10%; animation-delay:2s; }
-    .compliment:nth-child(7){ bottom:15%; left:15%; animation-delay:4s; }
-    .compliment:nth-child(8){ bottom:5%;  right:15%; animation-delay:6s; }
-
-    .player {
-      background:#fff0f5;
-      border-radius:70px;
-      padding:50px;
-      box-shadow:0 10px 25px rgba(255,182,193,.7);
-      text-align:center;
-      width:85%;
-      max-width:450px;
-      animation:float 2.8s ease-in-out infinite;
-      position:relative;
-      z-index:1;
-    }
-
-    .cat-container {
-      display:flex;
-      justify-content:center;
-      gap:25px;
-      margin-bottom:25px;
-    }
-    .cat {
-      font-size:72px;
-      animation:hop 1.6s infinite;
-      cursor:pointer;
-      touch-action:manipulation;
-    }
-    .cat:active {
-      transform:scale(1.4);
-      color:#ff69b4;
-    }
-
-    .play-button {
-      pointer-events: auto;    /* даємо кнопці можливість приймати події */
-      z-index:2;               /* поверх усього */
-      background:#ff99d6;
-      border:none;
-      padding:18px 45px;
-      border-radius:60px;
-      color:white;
-      font-size:22px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:transform .2s;
-      box-shadow:0 5px 12px rgba(255,153,204,.6);
-      touch-action:manipulation;
-    }
-    .play-button:hover {
-      transform:scale(1.1);
-      background:#ff80c4;
-    }
-    .play-button:active {
-      transform:scale(0.9);
-      background:#ff66bb; /* видно натискання */
-    }
-
-    audio { display:none; }
-
-    @keyframes float {
-      0%,100% { transform:translateY(0); }
-      50%     { transform:translateY(-10px); }
-    }
-    @keyframes hop {
-      0%,100% { transform:translateY(0); }
-      50%     { transform:translateY(-12px); }
-    }
-    @keyframes sway {
-      0%   { transform:translate(0,0); }
-      50%  { transform:translate(15px,15px); }
-      100% { transform:translate(0,0); }
-    }
-    @keyframes glow {
-      0%   { opacity:.5; }
-      50%  { opacity:1; }
-      100% { opacity:.5; }
-    }
-
-    @media(max-width:600px){
-      .player{width:90%;padding:35px;}
-      .cat{font-size:56px;}
-      .play-button{font-size:18px;padding:15px 35px;}
-      .compliment{font-size:14px;max-width:150px;}
-      .background-cat{font-size:50px;}
+    @media (max-width: 768px) {
+      .paper {
+        padding: 10px 50px;
+        font-size: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="background">
-    <span class="background-cat">😺</span>
-    <span class="background-cat">😽</span>
-    <span class="background-cat">😻</span>
-    <span class="background-cat">🐾</span>
-    <span class="compliment">Твоя усмішка зігріває краще, ніж сонечко! 😻</span>
-    <span class="compliment">Ти робиш мій день чарівним! 🌸</span>
-    <span class="compliment">Твоє серденько – як поле маків! 💖</span>
-    <span class="compliment">Ти моє кохане сонечко! 😺</span>
+  <div class="paper top-paper">
+    <p>Перетягуй папірці, сонечко! 🥰</p>
   </div>
-
-  <div class="player">
-    <span class="heart">💖</span><span class="heart">💖</span>
-    <span class="heart">💖</span><span class="heart">💖</span>
-
-    <div class="cat-container">
-      <span class="cat">😻</span>
-      <span class="cat">😽</span>
-      <span class="cat">🐾</span>
-    </div>
-
-    <button class="play-button">Натисни сюди!</button>
-
-    <audio id="audio" preload="auto">
-      <!-- MP3 для iOS/Safari -->
-      <source src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.mp3" type="audio/mpeg">
-      <!-- Оригінал OGG для інших -->
-      <source src="https://raw.githubusercontent.com/HackerfromHell/sonecko/main/audio_2025-07-13_19-00-04.ogg" type="audio/ogg">
-      Ваш браузер не підтримує аудіоелемент.
-    </audio>
+  <div class="paper">
+    <p>Доброго ранку моє кохане сонечко ❤️</p>
   </div>
-
+  <div class="paper">
+    <p>Твоя усмішка — це моє сонце, що зігріває кожен день! ☀️ </p>
+  </div>
+  <div class="paper">
+    <p>тож посміхайся частіше </p>
+  </div>
+  <div class="paper">
+    <p>Твої очі — це зорі, в яких я гублюсь! ✨</p>
+  </div>
+  <div class="paper">
+    <p>Ти — моє натхнення кожен день! 💕 </p>
+  </div>
+  <div class="paper">
+    <p>Навіть якщо сьогодні понеділок </p>
+  </div>
+  <div class="paper">
+    <p>Люблю тебе </p>
+  </div>
+  <div class="paper">
+    <p>Люблю тебе </p>
+  </div>
+  <div class="paper">
+    <p>❤️</p>
+  </div>
   <script>
-    const audio = document.getElementById('audio');
-    const btn = document.querySelector('.play-button');
+    let highestZ = 10; // Початкове значення highestZ відповідає з-index топового папірця
+    class Paper {
+      holdingPaper = false;
+      mouseTouchX = 0;
+      mouseTouchY = 0;
+      mouseX = 0;
+      mouseY = 0;
+      prevMouseX = 0;
+      prevMouseY = 0;
+      velX = 0;
+      velY = 0;
+      rotation = Math.random() * 30 - 15;
+      currentPaperX = 0;
+      currentPaperY = 0;
+      rotating = false;
+      touchId = null;
 
-    function playAudio() {
-      audio.play().catch(err => {
-        console.warn('Audio playback failed:', err);
-      });
+      init(paper) {
+        document.addEventListener('mousemove', (e) => {
+          if (!this.rotating) {
+            this.mouseX = e.clientX;
+            this.mouseY = e.clientY;
+            this.velX = this.mouseX - this.prevMouseX;
+            this.velY = this.mouseY - this.prevMouseY;
+          }
+          const dirX = e.clientX - this.mouseTouchX;
+          const dirY = e.clientY - this.mouseTouchY;
+          const dirLength = Math.sqrt(dirX * dirX + dirY * dirY);
+          const dirNormalizedX = dirX / dirLength;
+          const dirNormalizedY = dirY / dirLength;
+          const angle = Math.atan2(dirNormalizedY, dirNormalizedX);
+          let degrees = 180 * angle / Math.PI;
+          degrees = (360 + Math.round(degrees)) % 360;
+          if (this.rotating) {
+            this.rotation = degrees;
+          }
+          if (this.holdingPaper) {
+            if (!this.rotating) {
+              this.currentPaperX += this.velX;
+              this.currentPaperY += this.velY;
+            }
+            this.prevMouseX = this.mouseX;
+            this.prevMouseY = this.mouseY;
+            paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
+          }
+        });
+
+        paper.addEventListener('mousedown', (e) => {
+          if (this.holdingPaper) return;
+          this.holdingPaper = true;
+          paper.style.zIndex = highestZ;
+          highestZ += 1;
+          if (e.button === 0) {
+            this.mouseTouchX = this.mouseX;
+            this.mouseTouchY = this.mouseY;
+            this.prevMouseX = this.mouseX;
+            this.prevMouseY = this.mouseY;
+          }
+          if (e.button === 2) {
+            this.rotating = true;
+          }
+        });
+
+        window.addEventListener('mouseup', () => {
+          this.holdingPaper = false;
+          this.rotating = false;
+        });
+
+        paper.addEventListener('touchstart', (e) => {
+          if (this.holdingPaper || e.touches.length > 1) return;
+          e.preventDefault();
+          this.touchId = e.touches[0].identifier;
+          this.holdingPaper = true;
+          paper.style.zIndex = highestZ;
+          highestZ += 1;
+          this.mouseTouchX = e.touches[0].clientX;
+          this.mouseTouchY = e.touches[0].clientY;
+          this.prevMouseX = this.mouseTouchX;
+          this.prevMouseY = this.mouseTouchY;
+        }, { passive: false });
+
+        paper.addEventListener('touchmove', (e) => {
+          if (!this.holdingPaper || !e.touches.length) return;
+          e.preventDefault();
+          const touch = Array.from(e.touches).find(t => t.identifier === this.touchId);
+          if (touch) {
+            this.mouseX = touch.clientX;
+            this.mouseY = touch.clientY;
+            this.velX = this.mouseX - this.prevMouseX;
+            this.velY = this.mouseY - this.prevMouseY;
+            this.currentPaperX += this.velX;
+            this.currentPaperY += this.velY;
+            this.prevMouseX = this.mouseX;
+            this.prevMouseY = this.mouseY;
+            paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
+          }
+        }, { passive: false });
+
+        paper.addEventListener('touchend', (e) => {
+          if (!this.holdingPaper) return;
+          e.preventDefault();
+          const touch = Array.from(e.changedTouches).find(t => t.identifier === this.touchId);
+          if (touch) {
+            this.holdingPaper = false;
+          }
+        }, { passive: false });
+      }
     }
-
-    // Ловимо як click, так і touchend
-    btn.addEventListener('click', playAudio);
-    btn.addEventListener('touchend', e => {
-      e.preventDefault(); // щоби не дублювати click
-      playAudio();
+    const papers = Array.from(document.querySelectorAll('.paper'));
+    papers.forEach(paper => {
+      const p = new Paper();
+      p.init(paper);
     });
   </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95ed5dac1d18ca41',t:'MTc1MjQ1Nzc5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
