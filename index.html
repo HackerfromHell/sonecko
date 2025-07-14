@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>❤️</title>
@@ -23,14 +23,52 @@
       background-size: 500px;
       background-position: center center;
       padding: 20px 100px;
-      transform: rotateZ(-5deg);
       box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
       position: absolute;
       touch-action: none;
-      z-index: 1; /* Початковий z-index для всіх папірців */
+      left: 50%;
+      top: 50%;
     }
-    .top-paper {
-      z-index: 10; /* Вищий z-index для папірця зверху */
+    /* Встановлюємо z-index у зворотному порядку HTML */
+    .paper:nth-child(1) {
+      z-index: 10;
+      transform: translate(-50%, -50%) rotateZ(-5deg);
+    }
+    .paper:nth-child(2) {
+      z-index: 9;
+      transform: translate(-48%, -52%) rotateZ(3deg);
+    }
+    .paper:nth-child(3) {
+      z-index: 8;
+      transform: translate(-52%, -48%) rotateZ(-2deg);
+    }
+    .paper:nth-child(4) {
+      z-index: 7;
+      transform: translate(-49%, -50%) rotateZ(4deg);
+    }
+    .paper:nth-child(5) {
+      z-index: 6;
+      transform: translate(-51%, -49%) rotateZ(-3deg);
+    }
+    .paper:nth-child(6) {
+      z-index: 5;
+      transform: translate(-50%, -51%) rotateZ(2deg);
+    }
+    .paper:nth-child(7) {
+      z-index: 4;
+      transform: translate(-48%, -50%) rotateZ(-4deg);
+    }
+    .paper:nth-child(8) {
+      z-index: 3;
+      transform: translate(-52%, -49%) rotateZ(3deg);
+    }
+    .paper:nth-child(9) {
+      z-index: 2;
+      transform: translate(-49%, -51%) rotateZ(-2deg);
+    }
+    .paper:nth-child(10) {
+      z-index: 1;
+      transform: translate(-51%, -50%) rotateZ(5deg);
     }
     .paper:nth-of-type(3n) {
       background-position: left top;
@@ -48,42 +86,50 @@
         padding: 10px 50px;
         font-size: 30px;
       }
+      /* Зберігаємо зміщення для мобільних, але менші */
+      .paper:nth-child(1) { transform: translate(-50%, -50%) rotateZ(-5deg); }
+      .paper:nth-child(2) { transform: translate(-48%, -52%) rotateZ(3deg); }
+      .paper:nth-child(3) { transform: translate(-52%, -48%) rotateZ(-2deg); }
+      .paper:nth-child(4) { transform: translate(-49%, -50%) rotateZ(4deg); }
+      .paper:nth-child(5) { transform: translate(-51%, -49%) rotateZ(-3deg); }
+      .paper:nth-child(6) { transform: translate(-50%, -51%) rotateZ(2deg); }
+      .paper:nth-child(7) { transform: translate(-48%, -50%) rotateZ(-4deg); }
+      .paper:nth-child(8) { transform: translate(-52%, -49%) rotateZ(3deg); }
+      .paper:nth-child(9) { transform: translate(-49%, -51%) rotateZ(-2deg); }
+      .paper:nth-child(10) { transform: translate(-51%, -50%) rotateZ(5deg); }
     }
   </style>
 </head>
 <body>
-  <div class="paper top-paper">
+  <div class="paper">
     <p>Перетягуй папірці, сонечко! 🥰</p>
   </div>
   <div class="paper">
     <p>Доброго ранку моє кохане сонечко ❤️</p>
   </div>
   <div class="paper">
-    <p>Твоя усмішка — це моє сонце, що зігріває кожен день! ☀️ </p>
+    <p>Твоя усмішка — це моє сонце, що зігріває кожен день! ☀️</p>
   </div>
   <div class="paper">
-    <p>тож посміхайся частіше </p>
+    <p>тож посміхайся частіше</p>
   </div>
   <div class="paper">
     <p>Твої очі — це зорі, в яких я гублюсь! ✨</p>
   </div>
   <div class="paper">
-    <p>Ти — моє натхнення кожен день! 💕 </p>
+    <p>Ти — моє натхнення кожен день! 💕</p>
   </div>
   <div class="paper">
-    <p>Навіть якщо сьогодні понеділок </p>
+    <p>Навіть якщо сьогодні понеділок</p>
   </div>
   <div class="paper">
-    <p>Люблю тебе </p>
-  </div>
-  <div class="paper">
-    <p>Люблю тебе </p>
+    <p>Люблю тебе</p>
   </div>
   <div class="paper">
     <p>❤️</p>
   </div>
   <script>
-    let highestZ = 10; // Початкове значення highestZ відповідає з-index топового папірця
+    let highestZ = 11; // Починаємо з 11, щоб перетягування було вище початкових z-index
     class Paper {
       holdingPaper = false;
       mouseTouchX = 0;
@@ -94,7 +140,7 @@
       prevMouseY = 0;
       velX = 0;
       velY = 0;
-      rotation = Math.random() * 30 - 15;
+      rotation = 0; // Початковий поворот задано в CSS
       currentPaperX = 0;
       currentPaperY = 0;
       rotating = false;
@@ -197,5 +243,5 @@
       p.init(paper);
     });
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95ed5dac1d18ca41',t:'MTc1MjQ1Nzc5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95ed74cf293024b6',t:'MTc1MjQ1ODczOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
